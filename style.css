@@ -1,0 +1,860 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Edge */
+}
+
+body {
+  margin: 0px 0px;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.navbar {
+  width: 100%; /* Lebar navbar */
+  position: fixed; /* Mengatur posisi navbar tetap di atas */
+  top: 0; /* Mengatur posisi navbar di atas */
+  left: 0; /* Mengatur posisi navbar di kiri */
+  right: 0; /* Mengatur posisi navbar di kanan */
+  z-index: 1000; /* Mengatur z-index agar navbar di atas elemen lain */
+  background-color: #f8fafc; /* Warna latar belakang navbar */
+  padding: 10px 20px; /* atas & bawah: 10px, kanan & kiri: 20px */
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  justify-content: space-between; /* Mengatur jarak antar elemen */
+  align-items: center; /* Mengatur elemen anak agar sejajar secara vertikal */
+  padding: 20px 40px; /* atas & bawah: 10px, kanan & kiri: 20px */
+  border-bottom: 1px solid #000000;
+}
+
+.navbar-logo {
+  display: flex; /* Agar foto dan teks sejajar */
+  align-items: flex; /* Agar foto dan teks sejajar */
+}
+
+.navbar-logo img {
+  width: 60px; /* Lebar gambar */
+  height: 60px; /* Tinggi gambar */
+  margin-right: 10px; /* Jarak antara gambar dan teks */
+  border-radius: 100%; /* Membuat gambar menjadi bulat */
+  object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+  object-position: center 8%; /* Atur posisi vertikal yang pas */
+}
+
+.brand-name {
+  font-size: 24px; /* Ukuran font */
+  font-weight: bolder; /* Ketebalan font */
+  color: #000000; /* Warna teks */
+  position: relative; /* Mengatur posisi relatif */
+  top: 10px;
+}
+
+.navbar-menu {
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  list-style: none; /* Menghilangkan bullet point pada list */
+  margin: 0px; /* Menghilangkan margin */
+  padding: 0px; /* Menghilangkan padding */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+.navbar-menu {
+  list-style-type: none; /* Menghilangkan bullet point pada list */
+  margin: 0; /* Menghilangkan margin */
+  padding: 0; /* Menghilangkan padding */
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  gap: 20px; /* Jarak antar elemen */
+  font-size: 18px; /* Ukuran font */
+  font-weight: 500; /* Ketebalan font */
+  color: #000000; /* Warna teks */
+}
+
+.navbar-menu li a {
+  text-decoration: none; /* Menghilangkan garis bawah pada link */
+  color: #000000; /* Warna teks */
+  transition: all 0.2s ease; /* Transisi saat hover */
+  padding: 8px 12px; /* Ruang dalam biar klik lebih nyaman */
+  display: inline-block; /* Supaya padding bisa diterapkan */
+  border-radius: 5px; /* Sudut membulat */
+}
+
+.navbar-menu li a:hover {
+  color: #366ed8; /* Warna teks saat hover */
+}
+
+.home {
+  background-image: url("images/background.jpg"); /* Ganti dengan nama file gambar kamu */
+  background-size: cover; /* Mengatur gambar agar menutupi seluruh elemen */
+  background-position: center; /* Mengatur posisi gambar di tengah */
+  background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+  height: 100vh; /* Tinggi elemen home */
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  justify-content: center; /* Mengatur elemen anak agar sejajar secara horizontal */
+  align-items: center; /* Mengatur elemen anak agar sejajar secara vertikal */
+  text-align: center; /* Mengatur teks agar rata tengah */
+  overflow: hidden; /* Menghilangkan scroll */
+  position: relative; /* Mengatur posisi relatif */
+}
+
+.home h1 {
+  font-size: 65px; /* Ukuran font */
+  font-weight: 800; /* Ketebalan font */
+  color: #000000; /* Warna teks */
+  text-align: center; /* Mengatur teks agar rata tengah */
+  margin: 0; /* Menghilangkan margin */
+}
+
+.home p {
+  font-size: 20px; /* Ukuran font */
+  color: #000000; /* Warna teks */
+  margin: 20px 0; /* Atas & bawah: 20px, kanan & kiri: 0 */
+}
+
+.btn-primary {
+  background-color: #366ed8; /* Warna latar belakang tombol */
+  color: #ffffff; /* Warna teks tombol */
+  padding: 10px 20px; /* Atas & bawah: 10px, kanan & kiri: 20px */
+  border: none; /* Menghilangkan border */
+  border-radius: 6px; /* Sudut membulat */
+  font-size: 18px; /* Ukuran font */
+  font-weight: bold; /* Ketebalan font */
+  cursor: pointer; /* Mengubah kursor saat hover */
+  transition: all 0.3s ease; /* Transisi saat hover */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* bayangan sedikit kebawah dan blur */
+}
+
+.btn-primary:hover {
+  background-color: #224998; /* Warna latar belakang tombol saat hover */
+  transform: translateY(-2px); /* Mengangkat tombol sedikit saat hover */
+}
+
+.typing::after {
+  content: "|";
+  animation: blink 0.7s infinite;
+  color: #000000;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.about {
+  padding: 20px 30px; /* Atas & bawah: 100px, kanan & kiri: 20px */
+  background-color: #f8fafc; /* Warna latar belakang */
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+}
+
+.about-opening {
+  text-align: center;
+}
+
+.about h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 35px;
+  border-bottom: 8px solid #366ed8; /* garis bawah biru tebal */
+  padding-bottom: 8.5px; /* jarak antara teks dan garis */
+  display: inline-block; /* supaya garis selebar teks */
+}
+
+.about-content p {
+  max-width: 700px; /* batas lebar maksimum */
+  margin: 0 auto; /* agar teks tetap di tengah */
+  line-height: 1.6; /* jarak antar baris supaya enak dibaca */
+}
+
+.about-main {
+  display: flex;
+  gap: 80px; /* jarak antar kolom */
+  margin-top: 40px;
+}
+
+.about-me,
+.about-skills {
+  width: 50%; /* masing-masing 50% lebar */
+  box-sizing: border-box; /* supaya padding tidak nambah lebar */
+  padding: 0 15px; /* opsional, untuk jarak isi dari sisi */
+  min-width: 280px; /* agar tidak terlalu kecil saat responsive */
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap; /* Membungkus item ke baris baru */
+  gap: 10px 10px; /* Jarak antar item */
+  max-width: 100vh; /* Batas lebar maksimum */
+}
+
+.skills-list li {
+  background-color: #c7dfdb;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: default;
+  user-select: none;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  max-width: 120px;
+  white-space: nowrap; /* Mencegah teks terputus */
+  text-align: center; /* Rata tengah teks */
+  font-weight: 500; /* Ketebalan font */
+  color: #000000; /* Warna teks */
+  transition: all 0.3s ease; /* Transisi saat hover */
+}
+
+.skills-list li:hover {
+  
+  background: #fff;
+  transform: translateY(-2px); /* Mengangkat item sedikit saat hover */
+}
+
+.projects {
+  padding: 20px 30px; /* Memberi jarak dalam elemen: 20px atas & bawah, 45px kiri & kanan */
+  background-color: #f8fafc; /* Warna latar belakang section projects */
+  display: flex; /* Menggunakan flexbox agar anak elemen berjajar horizontal */
+  flex-direction: column; /* Susun elemen anak secara vertikal (column) */
+  margin: 0;
+}
+
+.projects-opening {
+  text-align: center; /* Mengatur teks judul dan paragraf pembuka agar rata tengah */
+  max-width: 700px; /* Batasi lebar teks supaya mudah dibaca */
+  margin: 0 auto 30px; /* Margin atas bawah dan auto kanan kiri agar centering */
+}
+
+.projects-opening h1 {
+  font-size: 36px; /* Ukuran font judul besar */
+  font-weight: 700; /* Ketebalan font */
+  color: #000000; /* Warna hitam */
+  margin-bottom: 8.5px; /* Jarak bawah */
+  border-bottom: 8px solid #366ed8; /* Garis bawah tebal berwarna biru */
+  display: inline-block; /* Agar garis bawah selebar teks */
+  padding-bottom: 8.5px; /* Jarak antara teks dan garis bawah */
+}
+
+.projects-opening p {
+  line-height: 1.6; /* Jarak antar baris paragraf agar nyaman dibaca */
+}
+
+.project-list {
+  display: grid; /* Flex container untuk menampilkan project-item berjajar */
+  grid-template-columns: 1fr 1fr; /* 2 kolom dengan lebar sama */
+  grid-template-rows: auto; /* Tinggi otomatis sesuai konten */
+  gap: 100px; /* Jarak antar project-item */
+  justify-content: center; /* Memusatkan project-item secara horizontal */
+  width: 100%; /* Lebar penuh dari container induk */
+}
+
+.project-list > :nth-child(odd) {
+  grid-column: 1; /* kiri */
+}
+
+.project-list > :nth-child(even) {
+  grid-column: 2; /* kanan */
+}
+
+.project-item {
+  height: 100%; /* pastikan mengisi slot grid */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.project-title {
+  font-weight: 700; /* Tebal font */
+  font-size: 14px; /* Ukuran font */
+  margin-bottom: 12px; /* Jarak bawah dari judul ke isi */
+  color: #333; /* Warna abu gelap */
+  text-transform: uppercase; /* Huruf kapital semua */
+  letter-spacing: 1.2px; /* Jarak antar huruf */
+}
+
+.project-content {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  height: 100%; /* Tambahan ini agar seluruh konten project-item mengisi ruang */
+}
+
+.project-image {
+  width: 240px; /* Lebar tetap gambar */
+  height: 180px; /* Tinggi tetap gambar */
+  border-radius: 8px; /* Sudut gambar dibulatkan */
+  overflow: hidden; /* Potong jika gambar keluar batas */
+  flex-shrink: 0; /* Jangan kecilkan gambar saat container sempit */
+  background-color: #d3d3d3; /* Warna latar alternatif saat gambar gagal muat */
+}
+
+.project-image img {
+  width: 100%; /* Gambar memenuhi wadahnya */
+  height: 100%;
+  object-fit: cover; /* Memastikan gambar proporsional dan tidak terdistorsi */
+  border-radius: 4px; /* Sudut gambar dibulatkan */
+}
+
+.project-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Tambahan ini untuk mendorong tombol ke bawah */
+  height: 100%;
+}
+
+.project-text p {
+  margin: 6px 0; /* Jarak atas bawah antar paragraf */
+  font-size: 14px; /* Ukuran font paragraf */
+  color: #555; /* Warna abu sedang */
+  line-height: 1.4; /* Jarak baris teks */
+  flex-grow: 1; /* Supaya paragraf memenuhi ruang vertikal sebelum tombol */
+}
+
+.projects a {
+  text-decoration: none; /* Hilangkan garis bawah pada link */
+  color: #ffffff; /* Warna teks biru */
+  font-weight: 700; /* Tebal font */
+  transition: all 0.3s ease; /* Transisi saat hover */
+}
+
+.btn {
+  margin-top: 10px; /* Jarak di atas tombol */
+  background-color: #366ed8; /* Warna tombol biru */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* bayangan sedikit kebawah dan blur */
+  border: none; /* Hilangkan border default */
+  border-radius: 4px; /* Sudut tombol dibulatkan */
+  padding: 8px 16px; /* Jarak dalam tombol */
+  font-size: 14px; /* Ukuran font tombol */
+  font-weight: 700; /* Tebal font */
+  color: white; /* Warna teks putih */
+  cursor: pointer; /* Kursor jadi pointer saat hover */
+  align-self: flex-start; /* Tombol tidak melebar, sesuaikan teks */
+  transition: background-color 0.3s ease; /* Animasi halus warna saat hover */
+}
+
+.btn:hover {
+  background-color: #274aab; /* Warna tombol lebih gelap saat hover */
+}
+
+.contact {
+  background-image: url("images/background.jpg"); /* Ganti dengan nama file gambar kamu */
+  background-size: cover; /* Mengatur gambar agar menutupi seluruh elemen */
+  background-position: center; /* Mengatur posisi gambar di tengah */
+  background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+  height: 87vh; /* Tinggi elemen home */
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  justify-content: center; /* Mengatur elemen anak agar sejajar secara horizontal */
+  align-items: center; /* Mengatur elemen anak agar sejajar secara vertikal */
+  text-align: center; /* Mengatur teks agar rata tengah */
+  overflow: hidden; /* Menghilangkan scroll */
+  position: relative; /* Mengatur posisi relatif */
+}
+
+.contact-opening {
+  text-align: center;
+}
+
+.contact h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #000000;
+  text-align: center;
+  margin-bottom: 35px;
+  border-bottom: 8px solid #366ed8; /* garis bawah biru tebal */
+  padding-bottom: 8.5px; /* jarak antara teks dan garis */
+  display: inline-block; /* supaya garis selebar teks */
+}
+
+.contact-content p {
+  max-width: 700px; /* batas lebar maksimum */
+  margin: 0 auto; /* agar teks tetap di tengah */
+  line-height: 1.6; /* jarak antar baris supaya enak dibaca */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Jarak antar elemen form */
+  max-width: 80%; /* Batas lebar maksimum form */
+  margin: 0 auto; /* Tengah secara horizontal */
+  font-family: "Poppins", sans-serif;
+}
+
+form input,
+form textarea {
+  padding: 12px 16px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s;
+  font-family: "Poppins", sans-serif;
+}
+
+form input:focus,
+form textarea:focus {
+  border-color: #366ed8;
+}
+
+form input[type="text"],
+form input[type="email"] {
+  width: 100%; /* agar input full lebar form */
+}
+
+form textarea {
+  min-height: 150px;
+  resize: vertical;
+  width: 100%; /* textarea tetap paling lebar */
+}
+
+form button {
+  background-color: #366ed8;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* bayangan sedikit kebawah dan blur */
+}
+
+form button:hover {
+  background-color: #2958b5;
+  box-shadow: 0 6px 12px rgba(41, 88, 181, 0.6); /* shadow lebih tebal saat hover */
+}
+
+footer {
+  background-color: #212121; /* Warna latar belakang footer */
+  padding: 20px 60px; /* Atas & bawah: 20px, kanan & kiri: 0 */
+}
+
+.footer-content {
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  justify-content: space-between; /* Mengatur jarak antar elemen */
+  align-items: center; /* Mengatur elemen anak agar sejajar secara vertikal */
+  flex-wrap: wrap; /* Agar elemen anak bisa membungkus ke baris berikutnya */
+}
+
+.footer-text {
+  color: #ffffff; /* Warna teks */
+  max-width: 700px; /* Batas lebar maksimum */
+}
+
+.footer-name {
+  font-weight: bolder; /* Ketebalan font */
+  color: #ffffff; /* Warna teks */
+  position: relative; /* Mengatur posisi relatif */
+  margin-bottom: 10px; /* Jarak bawah */
+}
+
+.footer-text p {
+  font-size: 12px; /* Ukuran font */
+  color: #ffffff; /* Warna teks */
+  margin: 5px 0;
+  line-height: 1.6; /* Jarak antar baris */
+}
+
+.social-icons {
+  display: flex; /* Agar elemen anak bisa sejajar horizontal */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+.social-icons img {
+  width: 45px; /* Lebar gambar */
+  height: 45px; /* Tinggi gambar */
+  cursor: pointer; /* Mengubah kursor saat hover */
+  border-radius: 50%; /* Membuat gambar menjadi bulat */
+  object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+  object-position: center; /* Atur posisi vertikal yang pas */
+  transition: transform 0.3s ease; /* Transisi saat hover */
+  filter: invert(1); /* Membalik semua warna */
+}
+
+.social-icons img:hover {
+  transform: scale(1.1); /* Membesarkan gambar saat hover */
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* TABLET - Ukuran layar sedang (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+  /* Navbar */
+  .navbar {
+    padding: 15px 25px;
+  }
+  
+  .navbar-logo img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .brand-name {
+    font-size: 20px;
+  }
+  
+  .navbar-menu {
+    font-size: 16px;
+    gap: 15px;
+  }
+
+  /* Home Section */
+  .home h1 {
+    font-size: 48px;
+  }
+  
+  .home p {
+    font-size: 18px;
+    margin: 15px 0;
+  }
+  
+  .btn-primary {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  /* About Section */
+  .about {
+    padding: 40px 25px;
+  }
+  
+  .about h1 {
+    font-size: 32px;
+  }
+  
+  .about-main {
+    gap: 40px;
+  }
+  
+  .skills-list {
+    max-width: 100%;
+  }
+
+  /* Projects Section */
+  .projects {
+    padding: 40px 25px;
+  }
+  
+  .projects-opening h1 {
+    font-size: 32px;
+  }
+  
+  .project-list {
+    gap: 60px;
+  }
+  
+  .project-image {
+    width: 200px;
+    height: 150px;
+  }
+
+  /* Contact Section */
+  .contact h1 {
+    font-size: 32px;
+  }
+  
+  form {
+    max-width: 90%;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px 40px;
+  }
+  
+  .social-icons img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* MOBILE - Ukuran layar kecil (hingga 768px) */
+@media screen and (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 12px 20px;
+    flex-direction: column;
+    gap: 10px;
+    position: relative; /* Ubah dari fixed agar tidak overlap */
+  }
+  
+  .navbar-logo {
+    justify-content: center;
+  }
+  
+  .navbar-logo img {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .brand-name {
+    font-size: 18px;
+    top: 5px;
+  }
+  
+  .navbar-menu {
+    font-size: 14px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Home Section */
+  .home {
+    padding: 20px;
+    height: auto;
+    min-height: 90vh;
+  }
+  
+  .home h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .home p {
+    font-size: 16px;
+    margin: 15px 10px;
+  }
+  
+  .btn-primary {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* About Section */
+  .about {
+    padding: 30px 20px;
+    flex-direction: column;
+  }
+  
+  .about h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+  
+  .about-main {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .about-me,
+  .about-skills {
+    width: 100%;
+    padding: 0;
+  }
+  
+  .skills-list {
+    justify-content: center;
+    max-width: 100%;
+  }
+  
+  .skills-list li {
+    min-width: 60px;
+    max-width: 100px;
+    font-size: 12px;
+    padding: 8px 15px;
+  }
+
+  /* Projects Section */
+  .projects {
+    padding: 30px 20px;
+  }
+  
+  .projects-opening h1 {
+    font-size: 28px;
+  }
+  
+  .project-list {
+    display: block; /* Ubah dari grid ke block */
+    gap: 0;
+  }
+  
+  .project-item {
+    margin-bottom: 40px;
+    width: 100%;
+  }
+  
+  .project-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .project-image {
+    width: 100%;
+    height: 200px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  
+  .project-text {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .project-text p {
+    font-size: 13px;
+  }
+  
+  .btn {
+    align-self: center;
+    margin-top: 15px;
+  }
+
+  /* Contact Section */
+  .contact {
+    padding: 30px 20px;
+    height: auto;
+    min-height: 80vh;
+  }
+  
+  .contact h1 {
+    font-size: 28px;
+    margin-bottom: 25px;
+  }
+  
+  form {
+    max-width: 95%;
+    gap: 12px;
+  }
+  
+  form input,
+  form textarea {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+  
+  form button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Footer */
+  footer {
+    padding: 20px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .footer-text {
+    max-width: 100%;
+  }
+  
+  .social-icons {
+    justify-content: center;
+    gap: 15px;
+  }
+  
+  .social-icons img {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* MOBILE KECIL - Ukuran layar sangat kecil (hingga 480px) */
+@media screen and (max-width: 480px) {
+  /* Navbar */
+  .navbar {
+    padding: 10px 15px;
+  }
+  
+  .brand-name {
+    font-size: 16px;
+  }
+  
+  .navbar-menu {
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  /* Home Section */
+  .home h1 {
+    font-size: 28px;
+  }
+  
+  .home p {
+    font-size: 14px;
+    margin: 10px 5px;
+  }
+
+  /* About Section */
+  .about {
+    padding: 25px 15px;
+  }
+  
+  .about h1 {
+    font-size: 24px;
+  }
+  
+  .skills-list li {
+    font-size: 11px;
+    padding: 6px 12px;
+  }
+
+  /* Projects Section */
+  .projects {
+    padding: 25px 15px;
+  }
+  
+  .projects-opening h1 {
+    font-size: 24px;
+  }
+  
+  .project-item {
+    margin-bottom: 30px;
+  }
+  
+  .project-image {
+    height: 160px;
+  }
+
+  /* Contact Section */
+  .contact {
+    padding: 25px 15px;
+  }
+  
+  .contact h1 {
+    font-size: 24px;
+  }
+  
+  form {
+    max-width: 100%;
+  }
+
+  /* Footer */
+  footer {
+    padding: 15px;
+  }
+  
+  .footer-text p {
+    font-size: 11px;
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+}
