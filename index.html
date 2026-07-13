@@ -40,10 +40,11 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="navbar-menu" id="navMenu" role="list">
-      <li role="listitem"><a href="#home" class="nav-link" data-section="home">Home</a></li>
-      <li role="listitem"><a href="#about" class="nav-link" data-section="about">About</a></li>
-      <li role="listitem"><a href="#project" class="nav-link" data-section="project">Projects</a></li>
-      <li role="listitem"><a href="#contact" class="nav-link" data-section="contact">Contact</a></li>
+      <li role="listitem"><a href="#home" class="nav-link" data-section="home" data-i18n="nav_home">Home</a></li>
+      <li role="listitem"><a href="#about" class="nav-link" data-section="about" data-i18n="nav_about">About</a></li>
+      <li role="listitem"><a href="#project" class="nav-link" data-section="project" data-i18n="nav_project">Projects</a></li>
+      <li role="listitem"><a href="#contact" class="nav-link" data-section="contact" data-i18n="nav_contact">Contact</a></li>
+      <li role="listitem"><button class="lang-toggle-btn" id="langToggle" aria-label="Toggle language">ID</button></li>
     </ul>
   </nav>
 
@@ -59,8 +60,8 @@
 
     <div class="home-content">
       <div class="glitch-wrapper">
-        <p class="sys-text" aria-hidden="true">&gt; INITIALIZING_PORTFOLIO.EXE</p>
-        <h1 class="glitch" data-text="HI, I'M">
+        <p class="sys-text" aria-hidden="true" data-i18n="sys_init">&gt; INITIALIZING_PORTFOLIO.EXE</p>
+        <h1 class="glitch" data-text="HI, I'M" data-i18n="hero_greeting">
           <span style="color: var(--neon-cyan)">HI, I'M</span>
         </h1>
         <h2 class="typed-wrapper">
@@ -68,7 +69,7 @@
         </h2>
       </div>
 
-      <p class="home-subtitle">
+      <p class="home-subtitle" data-i18n="hero_subtitle">
         <span class="highlight-text">Front-End Developer</span> &amp; <span class="highlight-text">Web Designer</span><br>
         Crafting immersive digital experiences that merge art &amp; technology.
       </p>
@@ -77,46 +78,46 @@
         <button class="btn-primary" id="downloadBtn">
           <a href="cv.pdf" download aria-label="Download CV PDF">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            Download CV
+            <span data-i18n="hero_btn_cv">Download CV</span>
           </a>
         </button>
-        <a href="#project" class="btn-secondary" aria-label="View my projects">View Projects</a>
+        <a href="#project" class="btn-secondary" aria-label="View my projects" data-i18n="hero_btn_projects">View Projects</a>
       </div>
 
       <!-- Stats bar -->
       <div class="stats-bar" aria-label="Quick stats">
         <div class="stat-item">
           <span class="stat-number" data-target="3">0</span>
-          <span class="stat-label">Years Exp.</span>
+          <span class="stat-label" data-i18n="stat_years">Years Exp.</span>
         </div>
         <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item">
           <span class="stat-number" data-target="8">0</span>
-          <span class="stat-label">Skills</span>
+          <span class="stat-label" data-i18n="stat_skills">Skills</span>
         </div>
         <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item">
-          <span class="stat-number" data-target="2">0</span>
-          <span class="stat-label">Projects</span>
+          <span class="stat-number" data-target="1">0</span>
+          <span class="stat-label" data-i18n="stat_projects">Projects</span>
         </div>
       </div>
     </div>
 
     <!-- Scroll indicator -->
     <div class="scroll-indicator" aria-hidden="true">
-      <span class="scroll-text">SCROLL</span>
+      <span class="scroll-text" data-i18n="scroll_text">SCROLL</span>
       <div class="scroll-line"></div>
     </div>
   </section>
 
   <!-- ======== ABOUT SECTION ======== -->
   <section class="about" id="about" aria-label="About me section">
-    <div class="section-bg-text" aria-hidden="true">ABOUT</div>
+    <div class="section-bg-text" aria-hidden="true" data-i18n="about_bg">ABOUT</div>
     <div class="about-content">
       <div class="about-opening">
         <div class="section-tag" aria-hidden="true">&gt; SYS.INFO()</div>
-        <h2 class="section-title" data-aos="fade-up">About Me</h2>
-        <p class="section-subtitle" data-aos="fade-up">
+        <h2 class="section-title" data-aos="fade-up" data-i18n="about_title">About Me</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-i18n="about_subtitle">
           Learn more about me, my work, and the skills I currently use — with a strong focus on front-end development, web design, and visual storytelling.
         </p>
       </div>
@@ -137,11 +138,11 @@
           <div class="card-header">
             <span class="card-tag">// GET_TO_KNOW_ME</span>
           </div>
-          <p class="about-intro">I'm a <strong>Front-End Focused Web Developer</strong> with a passion for crafting visually stunning, user-friendly web experiences.</p>
-          <p>
+          <p class="about-intro" data-i18n="about_intro">I'm a <strong>Front-End Focused Web Developer</strong> with a passion for crafting visually stunning, user-friendly web experiences.</p>
+          <p data-i18n="about_p1">
             I specialize in building and designing the front-end of websites and web applications to ensure a seamless, engaging user experience. Check out my work in the Projects section.
           </p>
-          <p>
+          <p data-i18n="about_p2">
             Beyond web dev, I enjoy designing impactful PowerPoint presentations and sharing design knowledge — always open to collaborations in front-end, web, or presentation design.
           </p>
           <div class="card-footer-tag" aria-hidden="true">&lt;/about&gt;</div>
@@ -205,12 +206,12 @@
 
   <!-- ======== PROJECTS SECTION ======== -->
   <section class="projects" id="project" aria-label="Projects section">
-    <div class="section-bg-text" aria-hidden="true">PROJECTS</div>
+    <div class="section-bg-text" aria-hidden="true" data-i18n="projects_bg">PROJECTS</div>
     <div class="projects-content">
       <div class="projects-opening">
         <div class="section-tag" aria-hidden="true">&gt; PROJECT_SHOWCASE.EXE</div>
-        <h2 class="section-title" data-aos="fade-up">My Projects</h2>
-        <p class="section-subtitle" data-aos="fade-up">
+        <h2 class="section-title" data-aos="fade-up" data-i18n="projects_title">My Projects</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-i18n="projects_subtitle">
           Explore my creative work in front-end development &amp; PowerPoint design. Each project reflects my commitment to delivering visually compelling, user-friendly results.
         </p>
       </div>
@@ -224,14 +225,34 @@
             Website
           </div>
           <div class="project-image-wrap">
-            <img src="images/projects/project-1.png" alt="Si-Telomoyo university website project" loading="lazy">
+            <div class="code-window">
+              <div class="code-header">
+                <div class="mac-buttons">
+                  <span class="dot close"></span>
+                  <span class="dot minimize"></span>
+                  <span class="dot expand"></span>
+                </div>
+                <span class="file-name">app.js</span>
+              </div>
+              <div class="code-body">
+                <pre><code><span class="line-num">1</span> <span class="keyword">const</span> <span class="var">project</span> = {
+<span class="line-num">2</span>   <span class="prop">name</span>: <span class="string">"Si-Telomoyo"</span>,
+<span class="line-num">3</span>   <span class="prop">type</span>: <span class="string">"Web App"</span>,
+<span class="line-num">4</span>   <span class="prop">tech</span>: [<span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"JS"</span>, <span class="string">"AOS"</span>],
+<span class="line-num">5</span>   <span class="prop">status</span>: <span class="string">"Live"</span>,
+<span class="line-num">6</span>   <span class="prop">init</span>: <span class="keyword">function</span>() {
+<span class="line-num">7</span>     <span class="func">deploy</span>(<span class="keyword">this</span>);
+<span class="line-num">8</span>   }
+<span class="line-num">9</span> };<span class="cursor"></span></code></pre>
+              </div>
+            </div>
             <div class="project-image-overlay" aria-hidden="true">
               <span class="overlay-text">VIEW PROJECT</span>
             </div>
           </div>
           <div class="project-info">
             <h3 class="project-name">Si-Telomoyo</h3>
-            <p class="project-desc">
+            <p class="project-desc" data-i18n="proj1_desc">
               A university project highlighting Mount Telomoyo with a clean, responsive layout and smooth scroll animations using AOS. Built with HTML, CSS, and JavaScript.
             </p>
             <div class="project-tech" aria-label="Technologies used">
@@ -241,38 +262,7 @@
             </div>
             <a href="https://ghaniputra.github.io/Si-Telomoyo/" class="btn-project" target="_blank" rel="noopener noreferrer" aria-label="View Si-Telomoyo project live">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              Live Demo
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card" data-aos="fade-up" data-aos-delay="200" tabindex="0" aria-label="PowerPoint project">
-          <div class="project-card-glow" aria-hidden="true"></div>
-          <div class="project-type-badge badge-pink">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            PowerPoint
-          </div>
-          <div class="project-image-wrap">
-            <img src="images/projects/project-2.png" alt="Computer networking PowerPoint presentation project" loading="lazy">
-            <div class="project-image-overlay" aria-hidden="true">
-              <span class="overlay-text">VIEW PROJECT</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <h3 class="project-name">Network Routing</h3>
-            <p class="project-desc">
-              A university assignment explaining routing, forwarding &amp; flexible addressing in computer networks. Structured animations enhance clarity and engagement.
-            </p>
-            <div class="project-tech" aria-label="Technologies used">
-              <span class="tech-tag">PowerPoint</span>
-              <span class="tech-tag">Design</span>
-              <span class="tech-tag">Animation</span>
-            </div>
-            <a href="https://docs.google.com/presentation/d/1OqQvhK1qsLf-dzG7qtZsrgXBZAmYnRw_/edit?usp=sharing&ouid=110811593803722808152&rtpof=true&sd=true"
-              class="btn-project btn-project-pink" target="_blank" rel="noopener noreferrer" aria-label="Download Network Routing presentation">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download
+              <span data-i18n="proj1_btn">Live Demo</span>
             </a>
           </div>
         </article>
@@ -282,7 +272,7 @@
 
   <!-- ======== CONTACT SECTION ======== -->
   <section class="contact" id="contact" aria-label="Contact section">
-    <div class="section-bg-text" aria-hidden="true">CONTACT</div>
+    <div class="section-bg-text" aria-hidden="true" data-i18n="contact_bg">CONTACT</div>
 
     <!-- 3D Grid Floor (reused) -->
     <div class="grid-floor grid-floor-contact" aria-hidden="true"></div>
@@ -291,31 +281,31 @@
     <div class="contact-content">
       <div class="contact-opening">
         <div class="section-tag" aria-hidden="true">&gt; SEND_MESSAGE.EXE</div>
-        <h2 class="section-title" data-aos="fade-up">Contact Me</h2>
-        <p class="section-subtitle" data-aos="fade-up">
+        <h2 class="section-title" data-aos="fade-up" data-i18n="contact_title">Contact Me</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-i18n="contact_subtitle">
           Got a question or an idea to share? Drop a message below — I'll get back to you soon! Always open for front-end, web, or presentation design collaborations.
         </p>
       </div>
 
       <form id="contact-form" class="contact-form" data-aos="fade-up" novalidate aria-label="Contact form">
         <div class="form-group">
-          <label for="name" class="form-label">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" aria-required="true">
+          <label for="name" class="form-label" data-i18n="form_name">Your Name</label>
+          <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" aria-required="true" data-i18n="form_name">
           <span class="form-focus-bar" aria-hidden="true"></span>
         </div>
         <div class="form-group">
-          <label for="email" class="form-label">Your Email</label>
-          <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" aria-required="true">
+          <label for="email" class="form-label" data-i18n="form_email">Your Email</label>
+          <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" aria-required="true" data-i18n="form_email">
           <span class="form-focus-bar" aria-hidden="true"></span>
         </div>
         <div class="form-group">
-          <label for="message" class="form-label">Your Message</label>
-          <textarea id="message" name="message" placeholder="Hey Akmal, let's collaborate..." required aria-required="true"></textarea>
+          <label for="message" class="form-label" data-i18n="form_message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Hey Akmal, let's collaborate..." required aria-required="true" data-i18n="form_message"></textarea>
           <span class="form-focus-bar" aria-hidden="true"></span>
         </div>
         <button type="submit" class="btn-submit" id="submitBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          <span>Send Message</span>
+          <span data-i18n="form_submit">Send Message</span>
         </button>
       </form>
     </div>
@@ -326,7 +316,7 @@
     <div class="footer-content">
       <div class="footer-text">
         <p class="footer-name">Akmal Ghani Wijaya Putra</p>
-        <p class="footer-desc">
+        <p class="footer-desc" data-i18n="footer_desc">
           A Front-End Developer &amp; Web Designer dedicated to building visually appealing, responsive, and user-centric web interfaces.
         </p>
       </div>
@@ -357,6 +347,7 @@
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="js/lang.js" defer></script>
   <script src="js/home.js" defer></script>
   <script src="js/contact.js" defer></script>
   <script src="js/main.js" defer></script>
