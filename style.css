@@ -1067,6 +1067,11 @@ body {
   background: rgba(255,0,110,0.08);
   border-bottom-color: rgba(255,0,110,0.15);
 }
+.badge-purple {
+  color: var(--neon-purple);
+  background: rgba(185,69,255,0.08);
+  border-bottom-color: rgba(185,69,255,0.15);
+}
 
 /* Project image */
 .project-image-wrap {
@@ -1302,6 +1307,15 @@ body {
 .btn-project-pink:hover {
   color: var(--bg-void);
   box-shadow: var(--glow-pink);
+}
+.btn-project-purple {
+  color: var(--neon-purple);
+  border-color: var(--neon-purple);
+}
+.btn-project-purple::before { background: var(--neon-purple); }
+.btn-project-purple:hover {
+  color: var(--bg-void);
+  box-shadow: var(--glow-purple);
 }
 
 /* ── CONTACT SECTION ─────────────────────────────────────── */
