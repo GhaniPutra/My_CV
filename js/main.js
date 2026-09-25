@@ -302,3 +302,46 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
     }, 150);
   });
 })();
+
+// ── CV PREVIEW MODAL ──────────────────────────────────────
+(function initCvModal() {
+  const modal = qs('#cvModal');
+  const openBtn = qs('#viewCvBtn');
+  const closeBtn = qs('#closeCvModal');
+  const backdrop = qs('#cvModalBackdrop');
+  if (!modal || !openBtn) return;
+
+  function openModal() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    openBtn.focus();
+  }
+
+  openBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeModal);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeModal);
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      closeModal();
+    }
+  });
+})();
+
