@@ -309,12 +309,73 @@ if (yearEl) yearEl.textContent = new Date().getFullYear();
   const openBtn = qs('#viewCvBtn');
   const closeBtn = qs('#closeCvModal');
   const backdrop = qs('#cvModalBackdrop');
+  const img = qs('#cvPreviewImg');
+  const zoomIn = qs('#cvZoomIn');
+  const zoomOut = qs('#cvZoomOut');
+  const zoomReset = qs('#cvZoomReset');
+  const zoomLevelText = qs('#cvZoomLevel');
   if (!modal || !openBtn) return;
 
+  const zoomLevels = [75, 100, 125, 150, 200];
+  let currentZoomIdx = 1; // 100%
+
+  function applyZoom() {
+    const level = zoomLevels[currentZoomIdx];
+    if (zoomLevelText) zoomLevelText.textContent = level + '%';
+    if (!img) return;
+
+    if (level === 100) {
+      img.style.maxWidth = '780px';
+      img.style.width = '100%';
+    } else {
+      img.style.maxWidth = `${Math.round(780 * (level / 100))}px`;
+      img.style.width = `${level}%`;
+    }
+  }
+
+  if (zoomIn) {
+    zoomIn.addEventListener('click', () => {
+      if (currentZoomIdx < zoomLevels.length - 1) {
+        currentZoomIdx++;
+        applyZoom();
+      }
+    });
+  }
+
+  if (zoomOut) {
+    zoomOut.addEventListener('click', () => {
+      if (currentZoomIdx > 0) {
+        currentZoomIdx--;
+        applyZoom();
+      }
+    });
+  }
+
+  if (zoomReset) {
+    zoomReset.addEventListener('click', () => {
+      currentZoomIdx = 1;
+      applyZoom();
+    });
+  }
+
+  if (img) {
+    img.addEventListener('dblclick', () => {
+      currentZoomIdx = currentZoomIdx === 1 ? 3 : 1;
+      applyZoom();
+    });
+  }
+
   function openModal() {
+    currentZoomIdx = 1;
+    applyZoom();
     modal.classList.add('active');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    const scrollContainer = qs('#cvPreviewScroll');
+    if (scrollContainer) {
+      scrollContainer.scrollTop = 0;
+      scrollContainer.scrollLeft = 0;
+    }
     if (closeBtn) closeBtn.focus();
   }
 
