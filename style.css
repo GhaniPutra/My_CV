@@ -31,6 +31,7 @@
   --glow-cyan:    0 0 10px rgba(0,255,255,0.8), 0 0 30px rgba(0,255,255,0.4), 0 0 60px rgba(0,255,255,0.15);
   --glow-pink:    0 0 10px rgba(255,0,110,0.8), 0 0 30px rgba(255,0,110,0.4), 0 0 60px rgba(255,0,110,0.15);
   --glow-purple:  0 0 10px rgba(185,69,255,0.8), 0 0 30px rgba(185,69,255,0.4), 0 0 60px rgba(185,69,255,0.15);
+  --glow-green:   0 0 10px rgba(5,255,161,0.8), 0 0 30px rgba(5,255,161,0.4), 0 0 60px rgba(5,255,161,0.15);
 
   --transition-fast: 150ms ease;
   --transition-mid:  300ms ease;
@@ -1393,6 +1394,11 @@ body {
   background: rgba(185,69,255,0.08);
   border-bottom-color: rgba(185,69,255,0.15);
 }
+.badge-green {
+  color: var(--neon-green);
+  background: rgba(5,255,161,0.08);
+  border-bottom-color: rgba(5,255,161,0.15);
+}
 
 /* Project image */
 .project-image-wrap {
@@ -1637,6 +1643,15 @@ body {
 .btn-project-purple:hover {
   color: var(--bg-void);
   box-shadow: var(--glow-purple);
+}
+.btn-project-green {
+  color: var(--neon-green);
+  border-color: var(--neon-green);
+}
+.btn-project-green::before { background: var(--neon-green); }
+.btn-project-green:hover {
+  color: var(--bg-void);
+  box-shadow: var(--glow-green);
 }
 
 /* ── CONTACT SECTION ─────────────────────────────────────── */
