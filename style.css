@@ -650,6 +650,7 @@ html.has-reveals [data-aos].aos-animate { opacity: 1; transform: none; }
   .home-subtitle { max-width: 430px; margin-bottom: 24px; font-size: 17px; }
   .home-actions { display: grid; grid-template-columns: 1fr 1fr; margin-bottom: 38px; }
   .btn-primary, .btn-secondary, .btn-tertiary { width: 100%; min-height: 48px; }
+  .btn-tertiary { grid-column: 1 / -1; }
   .btn-secondary { grid-column: 1 / -1; }
   .stats-bar { gap: 0; }
   .stat-number { font-size: 24px; }
