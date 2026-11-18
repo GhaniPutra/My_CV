@@ -4,18 +4,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Akmal Ghani Wijaya Putra — Front-End Developer & Web Designer crafting immersive, visually compelling web experiences.">
+  <meta name="description" content="Akmal Ghani Wijaya Putra | Front-End Developer and Web Designer crafting immersive, visually compelling web experiences.">
   <title>Akmal Ghani | Front-End Developer</title>
 
-  <!-- Fonts: Orbitron (display) + Share Tech Mono (body/code) + Rajdhani (UI) -->
+  <!-- Type: Orbitron for display, Rajdhani for reading and controls. -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+  <a class="skip-link" href="#main-content" data-i18n="skip_main">Skip to main content</a>
 
   <!-- ======== SCANLINE OVERLAY ======== -->
   <div class="scanlines" aria-hidden="true"></div>
@@ -25,382 +27,251 @@
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
 
-  <!-- ======== THREE.JS BACKGROUND ======== -->
-  <canvas id="threeCanvas" aria-hidden="true"></canvas>
-
   <!-- ======== NAVBAR ======== -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <nav class="navbar" id="navbar" aria-label="Main navigation" data-i18n-aria-label="nav_label">
     <div class="navbar-logo">
       <img src="images/Porfile.jpg" class="photo" alt="Akmal Ghani profile photo">
       <span class="brand-name">
         <span class="brand-accent">&lt;</span>Akmal<span class="brand-accent">/&gt;</span>
       </span>
     </div>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-controls="navMenu" aria-expanded="false" data-i18n-aria-label="nav_open">
       <span></span><span></span><span></span>
     </button>
-    <ul class="navbar-menu" id="navMenu" role="list">
-      <li role="listitem"><a href="#home" class="nav-link" data-section="home" data-i18n="nav_home">Home</a></li>
-      <li role="listitem"><a href="#about" class="nav-link" data-section="about" data-i18n="nav_about">About</a></li>
-      <li role="listitem"><a href="#project" class="nav-link" data-section="project" data-i18n="nav_project">Projects</a></li>
-      <li role="listitem"><a href="#contact" class="nav-link" data-section="contact" data-i18n="nav_contact">Contact</a></li>
-      <li role="listitem"><button class="lang-toggle-btn" id="langToggle" aria-label="Toggle language">ID</button></li>
+    <ul class="navbar-menu" id="navMenu">
+      <li><a href="#home" class="nav-link" data-section="home" data-i18n="nav_home">Home</a></li>
+      <li><a href="#about" class="nav-link" data-section="about" data-i18n="nav_about">About</a></li>
+      <li><a href="#project" class="nav-link" data-section="project" data-i18n="nav_project">Projects</a></li>
+      <li><a href="#contact" class="nav-link" data-section="contact" data-i18n="nav_contact">Contact</a></li>
+      <li><button class="lang-toggle-btn" id="langToggle" aria-label="Switch language">ID</button></li>
     </ul>
   </nav>
 
+  <main id="main-content" tabindex="-1">
+
   <!-- ======== HOME SECTION ======== -->
-  <section class="home" id="home" aria-label="Hero section">
+  <section class="home" id="home" aria-label="Hero section" data-i18n-aria-label="hero_label" tabindex="-1">
+
+    <canvas id="threeCanvas" aria-hidden="true"></canvas>
+    <div class="hero-object-fallback" aria-hidden="true">AG</div>
 
     <!-- 3D Grid Floor -->
     <div class="grid-floor" aria-hidden="true"></div>
-    <!-- Floating orbs -->
-    <div class="orb orb-1" aria-hidden="true"></div>
-    <div class="orb orb-2" aria-hidden="true"></div>
-    <div class="orb orb-3" aria-hidden="true"></div>
 
     <div class="home-content">
       <div class="glitch-wrapper">
-        <p class="sys-text" aria-hidden="true" data-i18n="sys_init">&gt; INITIALIZING_PORTFOLIO.EXE</p>
-        <h1 class="glitch" data-text="HI, I'M" data-i18n="hero_greeting">
-          <span style="color: var(--neon-cyan)">HI, I'M</span>
+        <h1 class="glitch" data-text="AKMAL GHANI">
+          <span>Akmal Ghani</span>
         </h1>
         <h2 class="typed-wrapper">
-          <span class="typing" id="typed-name" aria-live="polite"></span>
+          <span class="typing" id="typed-name" aria-hidden="true">Front-End Developer</span>
+              <span class="visually-hidden" data-i18n="hero_roles">Front-End Developer and Web Designer</span>
         </h2>
       </div>
 
-      <p class="home-subtitle" data-i18n="hero_subtitle">
-        <span class="highlight-text">Front-End Developer</span> &amp; <span class="highlight-text">Web Designer</span><br>
-        Crafting immersive digital experiences that merge art &amp; technology.
+      <p class="home-subtitle">
+        <span class="highlight-text" data-i18n="hero_role_primary">Front-End Developer</span> &amp;
+        <span class="highlight-text" data-i18n="hero_role_secondary">Web Designer</span><br>
+        <span data-i18n="hero_description">Crafting immersive digital experiences that merge art and technology.</span>
       </p>
 
       <div class="home-actions">
-        <button class="btn-primary" id="downloadBtn">
-          <a href="Akmal_Ghani_CV.pdf" download aria-label="Download CV PDF">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            <span data-i18n="hero_btn_cv">Download CV</span>
-          </a>
-        </button>
-        <button type="button" class="btn-tertiary" id="viewCvBtn" aria-haspopup="dialog" aria-controls="cvModal" aria-label="View CV without downloading">
+        <a class="btn-primary" href="Akmal_Ghani_CV.pdf" download aria-label="Download CV as PDF" data-i18n-aria-label="hero_download_cv_label">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <span data-i18n="hero_btn_cv">Download CV</span>
+        </a>
+        <a class="btn-tertiary" id="viewCvBtn" href="Akmal_Ghani_CV.pdf" target="_blank" rel="noopener noreferrer" aria-haspopup="dialog" aria-controls="cvModal" aria-label="View CV without downloading" data-i18n-aria-label="hero_view_cv_label">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
           <span data-i18n="hero_btn_view_cv">View CV</span>
-        </button>
-        <a href="#project" class="btn-secondary" aria-label="View my projects" data-i18n="hero_btn_projects">View Projects</a>
+        </a>
+        <a href="#project" class="btn-secondary" aria-label="View my projects" data-i18n-aria-label="hero_projects_label" data-i18n="hero_btn_projects">View Projects</a>
       </div>
 
       <!-- Stats bar -->
-      <div class="stats-bar" aria-label="Quick stats">
+      <div class="stats-bar" aria-label="Quick stats" data-i18n-aria-label="stats_label">
         <div class="stat-item">
-          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-number" data-target="3">3+</span>
           <span class="stat-label" data-i18n="stat_years">Years Exp.</span>
         </div>
-        <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item">
-          <span class="stat-number" data-target="11">0</span>
+          <span class="stat-number" data-target="11">11+</span>
           <span class="stat-label" data-i18n="stat_skills">Skills</span>
         </div>
-        <div class="stat-divider" aria-hidden="true"></div>
         <div class="stat-item">
-          <span class="stat-number" data-target="4">0</span>
+          <span class="stat-number" data-target="4">4+</span>
           <span class="stat-label" data-i18n="stat_projects">Projects</span>
         </div>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="scroll-indicator" aria-hidden="true">
-      <span class="scroll-text" data-i18n="scroll_text">SCROLL</span>
-      <div class="scroll-line"></div>
-    </div>
   </section>
 
   <!-- ======== ABOUT SECTION ======== -->
-  <section class="about" id="about" aria-label="About me section">
+  <section class="about" id="about" aria-label="About me section" data-i18n-aria-label="about_title" tabindex="-1">
     <div class="section-bg-text" aria-hidden="true" data-i18n="about_bg">ABOUT</div>
     <div class="about-content">
       <div class="about-opening">
-        <div class="section-tag" aria-hidden="true">&gt; SYS.INFO()</div>
         <h2 class="section-title" data-aos="fade-up" data-i18n="about_title">About Me</h2>
         <p class="section-subtitle" data-aos="fade-up" data-i18n="about_subtitle">
-          Learn more about me, my work, and the skills I currently use — with a strong focus on front-end development, web design, and visual storytelling.
+          Learn more about me, my work, and the skills I currently use, with a focus on front-end development, web design, and visual storytelling.
         </p>
       </div>
 
       <div class="about-main">
         <div class="about-card about-profile-pic" data-aos="fade-right">
-          <div class="card-header">
-            <span class="card-tag">// USER_AVATAR.IMG</span>
-          </div>
           <div class="profile-pic-container">
             <img src="images/Porfile.jpg" class="profile-pic" alt="Akmal Ghani profile photo">
-            <div class="pic-glitch-overlay" aria-hidden="true"></div>
           </div>
-          <div class="card-footer-tag" aria-hidden="true">&lt;/avatar&gt;</div>
         </div>
 
         <div class="about-card about-me" data-aos="fade-right" data-aos-delay="100">
-          <div class="card-header">
-            <span class="card-tag">// GET_TO_KNOW_ME</span>
-          </div>
+          <h3 class="content-subheading" data-i18n="about_heading">What I do</h3>
           <p class="about-intro" data-i18n="about_intro">I'm a <strong>Front-End Focused Web Developer</strong> with a passion for crafting visually stunning, user-friendly web experiences.</p>
           <p data-i18n="about_p1">
-            I specialize in building and designing the front-end of websites and web applications to ensure a seamless, engaging user experience. Check out my work in the Projects section.
+          I specialize in building and designing the front-end of websites and web applications to create an engaging user experience. Explore my work in the Projects section.
           </p>
           <p data-i18n="about_p2">
-            Beyond web dev, I enjoy designing impactful PowerPoint presentations and sharing design knowledge — always open to collaborations in front-end, web, or presentation design.
+          Beyond web development, I enjoy designing PowerPoint presentations and sharing design knowledge. I am open to collaborations in front-end, web, or presentation design.
           </p>
-          <div class="card-footer-tag" aria-hidden="true">&lt;/about&gt;</div>
         </div>
 
-        <div class="about-card about-skils" data-aos="fade-left" data-aos-delay="200" role="region" aria-label="Skills">
-          <div class="card-header">
-            <span class="card-tag">// SKILL_SET.EXE</span>
-          </div>
+        <div class="about-card about-skils" data-aos="fade-left" data-aos-delay="200" role="region" aria-label="Skills" data-i18n-aria-label="skills_heading">
+          <h3 class="content-subheading" data-i18n="skills_heading">Skills</h3>
           <ul class="skills-list" role="list">
-            <li class="tag skill-html" role="listitem" tabindex="0">
+            <li class="tag skill-html">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
               HTML
             </li>
-            <li class="tag skill-css" role="listitem" tabindex="0">
+            <li class="tag skill-css">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414v-.001z"/></svg>
               CSS
             </li>
-            <li class="tag skill-ppt" role="listitem" tabindex="0">
+            <li class="tag skill-ppt">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 1.5q1.453 0 2.795.375 1.342.375 2.508 1.06 1.166.686 2.12 1.641.956.955 1.641 2.121.686 1.166 1.061 2.508Q24 10.547 24 12q0 1.453-.375 2.795-.375 1.342-1.06 2.508-.686 1.166-1.641 2.12-.955.956-2.121 1.641-1.166.686-2.508 1.061-1.342.375-2.795.375-1.29 0-2.52-.305-1.23-.304-2.337-.884-1.108-.58-2.063-1.418-.955-.838-1.693-1.893H.997q-.411 0-.704-.293T0 17.004V6.996q0-.41.293-.703T.996 6h3.89q.739-1.055 1.694-1.893.955-.837 2.063-1.418 1.107-.58 2.337-.884Q12.21 1.5 13.5 1.5zm.75 1.535v8.215h8.215q-.14-1.64-.826-3.076-.686-1.436-1.782-2.531-1.095-1.096-2.537-1.782-1.441-.685-3.07-.826zm-5.262 7.57q0-.68-.228-1.166-.229-.486-.627-.79-.399-.305-.938-.446-.539-.14-1.172-.14H2.848v7.863h1.84v-2.742H5.93q.574 0 1.119-.17t.978-.493q.434-.322.698-.802.263-.48.263-1.114zM13.5 21q1.172 0 2.262-.287t2.056-.82q.967-.534 1.776-1.278.808-.744 1.418-1.664.61-.92.984-1.986.375-1.067.469-2.227h-9.703V3.035q-1.735.14-3.27.908T6.797 6h4.207q.41 0 .703.293t.293.703v10.008q0 .41-.293.703t-.703.293H6.797q.644.715 1.412 1.271.768.557 1.623.944.855.387 1.781.586Q12.54 21 13.5 21zM5.812 9.598q.575 0 .915.228.34.229.34.838 0 .27-.124.44-.123.17-.31.275-.188.105-.422.146-.234.041-.445.041H4.687V9.598Z"/></svg>
               PowerPoint
             </li>
-            <li class="tag skill-canva" role="listitem" tabindex="0">
+            <li class="tag skill-canva">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.962 7.68c.754 0 1.337.549 1.405 1.2.069.583-.171 1.097-.822 1.406-.343.171-.48.172-.549.069-.034-.069 0-.137.069-.206.617-.514.617-.926.548-1.508-.034-.378-.308-.618-.583-.618-1.2 0-2.914 2.674-2.674 4.629.103.754.549 1.646 1.509 1.646.308 0 .65-.103.96-.24.5-.264.799-.47 1.097-.8-.073-.885.704-2.046 1.851-2.046.515 0 .926.205.96.583.068.514-.377.582-.514.582s-.378-.034-.378-.17c-.034-.138.309-.07.275-.378-.035-.206-.24-.274-.446-.274-.72 0-1.131.994-1.029 1.611.035.275.172.549.447.549.205 0 .514-.31.617-.755.068-.308.343-.514.583-.514.102 0 .17.034.205.171v.138c-.034.137-.137.548-.102.651 0 .069.034.171.17.171.092 0 .436-.18.777-.459.117-.59.253-1.298.253-1.357.034-.24.137-.48.617-.48.103 0 .171.034.205.171v.138l-.136.617c.445-.583 1.097-.994 1.508-.994.172 0 .309.102.309.274 0 .103 0 .274-.069.446-.137.377-.309.96-.412 1.474 0 .137.035.274.207.274.171 0 .685-.206 1.096-.754l.007-.004c-.002-.068-.007-.134-.007-.202 0-.411.035-.754.104-.994.068-.274.411-.514.617-.514.103 0 .205.069.205.171 0 .035 0 .103-.034.137-.137.446-.24.857-.24 1.269 0 .24.034.582.102.788 0 .034.035.069.07.069.068 0 .548-.445.89-1.028-.308-.206-.48-.549-.48-.96 0-.72.446-1.097.858-1.097.343 0 .617.24.617.72 0 .308-.103.65-.274.96h.102a.77.77 0 0 0 .584-.24.293.293 0 0 1 .134-.117c.335-.425.83-.74 1.41-.74.48 0 .924.205.959.582.068.515-.378.618-.515.618l-.002-.002c-.138 0-.377-.035-.377-.172 0-.137.309-.068.274-.376-.034-.206-.24-.275-.446-.275-.686 0-1.13.891-1.028 1.611.034.275.171.583.445.583.206 0 .515-.308.652-.754.068-.274.343-.514.583-.514.103 0 .17.034.205.171 0 .069 0 .206-.137.652-.17.308-.171.48-.137.617.034.274.171.48.309.583.034.034.068.102.068.102 0 .069-.034.138-.137.138-.034 0-.068 0-.103-.035-.514-.205-.72-.548-.789-.891-.205.24-.445.377-.72.377-.445 0-.89-.411-.96-.926a1.609 1.609 0 0 1 .075-.649c-.203.13-.422.203-.623.203h-.17c-.447.652-.927 1.098-1.27 1.303a.896.896 0 0 1-.377.104c-.068 0-.171-.035-.205-.104-.095-.152-.156-.392-.193-.667-.481.527-1.145.805-1.453.805-.343 0-.548-.206-.582-.55v-.376c.102-.754.377-1.2.377-1.337a.074.074 0 0 0-.069-.07c-.24 0-1.028.824-1.166 1.373l-.103.445c-.068.309-.377.515-.582.515-.103 0-.172-.035-.206-.172v-.137l.046-.233c-.435.31-.87.508-1.075.508-.308 0-.48-.172-.514-.412-.206.274-.445.412-.754.412-.352 0-.696-.24-.862-.593-.244.275-.523.553-.852.764-.48.309-1.028.549-1.68.549-.582 0-1.097-.309-1.371-.583-.412-.377-.651-.96-.686-1.509-.205-1.68.823-3.84 2.4-4.8.378-.205.755-.343 1.132-.343zm9.77 3.291c-.104 0-.172.172-.172.343 0 .274.137.583.309.755a1.74 1.74 0 0 0 .102-.583c0-.343-.137-.515-.24-.515z"/></svg>
               Canva
             </li>
-            <li class="tag skill-php" role="listitem" tabindex="0">
+            <li class="tag skill-php">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.01 10.207h-.944l-.515 2.648h.838c.556 0 .97-.105 1.242-.314.272-.21.455-.559.55-1.049.092-.47.05-.802-.124-.995-.175-.193-.523-.29-1.047-.29zM12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12c0-3.486-5.373-6.312-12-6.312zm-3.26 7.451c-.261.25-.575.438-.917.551-.336.108-.765.164-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65c.797 0 1.378.209 1.744.628.366.418.476 1.002.33 1.752a2.836 2.836 0 0 1-.305.847c-.143.255-.33.49-.561.703zm4.024.715l.543-2.799c.063-.318.039-.536-.068-.651-.107-.116-.336-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218c.767 0 1.295.134 1.586.401s.378.7.263 1.299l-.572 2.944h-1.389zm7.597-2.265a2.782 2.782 0 0 1-.305.847c-.143.255-.33.49-.561.703a2.44 2.44 0 0 1-.917.551c-.336.108-.765.164-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649c.797 0 1.378.209 1.744.628.366.417.477 1.001.331 1.751zM17.766 10.207h-.943l-.516 2.648h.838c.557 0 .971-.105 1.242-.314.272-.21.455-.559.551-1.049.092-.47.049-.802-.125-.995s-.524-.29-1.047-.29z"/></svg>
               PHP
             </li>
-            <li class="tag skill-py" role="listitem" tabindex="0">
+            <li class="tag skill-py">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.914 0C5.82 0 6.2 2.656 6.2 2.656l.007 2.752h5.814v.826H3.9S0 5.789 0 11.969c0 6.18 3.403 5.96 3.403 5.96h2.03V15.01s-.109-3.4 3.34-3.4h5.764s3.23.052 3.23-3.124V3.19S18.28 0 11.914 0zM8.708 1.84a1.047 1.047 0 011.051 1.044 1.047 1.047 0 01-1.051 1.043A1.047 1.047 0 017.658 2.884 1.047 1.047 0 018.708 1.84z"/><path d="M12.086 24c6.094 0 5.714-2.656 5.714-2.656l-.007-2.752h-5.814v-.826h8.121S24 18.211 24 12.031c0-6.18-3.403-5.96-3.403-5.96h-2.03V8.99s.109 3.4-3.34 3.4h-5.764s-3.23-.052-3.23 3.124v5.296S5.72 24 12.086 24zm3.206-1.84a1.047 1.047 0 01-1.051-1.044 1.047 1.047 0 011.051-1.043 1.047 1.047 0 011.05 1.043 1.047 1.047 0 01-1.05 1.044z"/></svg>
               Python
             </li>
-            <li class="tag skill-figma" role="listitem" tabindex="0">
+            <li class="tag skill-figma">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zm-4.587-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019h3.117v-6.038H8.148zm4.587 15.019c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49 4.49 2.014 4.49 4.49-2.014 4.49-4.49 4.49zm0-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.019 3.019 3.019 3.019-1.355 3.019-3.019-1.354-3.019-3.019-3.019z"/></svg>
               Figma
             </li>
-            <li class="tag skill-rwd" role="listitem" tabindex="0">
+            <li class="tag skill-rwd">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
               Responsive
             </li>
-            <li class="tag skill-laravel" role="listitem" tabindex="0">
+            <li class="tag skill-laravel">
               <svg width="16" height="16" viewBox="0 0 512 512" fill="currentColor" aria-hidden="true"><path d="M107.2 0c2.5 0 4.7 .8 6.7 2l94.3 54.1c2.7 1.5 4.5 3.5 5.4 5.9c.9 2.2 .9 4.3 .9 5.6l0 193.4 69.2-39.7 0-100.3c0-2.6 .6-5 2.2-7.2c1.5-2.1 3.5-3.6 5.7-4.8c0 0 0 0 0 0l94-54c1.6-.9 3.4-1.6 5.5-1.6s4 .7 5.6 1.6l95.8 55.1c2.3 1.3 3.9 3 4.9 5.3c.9 2.1 .9 4.2 .9 5.8l0 107.2c0 2-.2 4.3-1.4 6.4c-1.2 2.2-3 3.7-5.1 4.9l-.1 .1-88 50.5 0 100c0 2.3-.3 4.8-1.6 7c-1.3 2.2-3.3 3.7-5.3 4.9c0 0 0 0-.1 0L208.7 510c-2.2 1.2-4.5 2-7.1 2s-4.9-.9-7.1-2l-.1-.1L7.1 402l-.5-.3c-1.1-.7-2.6-1.7-3.8-2.9C.9 396.9 0 394.6 0 391.6L0 65.9c0-4.8 3-7.9 5.5-9.3L100.5 2c2-1.2 4.3-2 6.8-2zM38.1 67.1l69 39.9 69.2-39.9L107.1 27.4l-69 39.7zm353 93.2l69-39.7-69-39.7-69.1 39.7 69.1 39.7zM189.2 89L120 128.8l0 186.4 69.2-39.9 0-186.4zM94.5 128.9L25.2 89.1l0 294.2 164 94.2 0-79.4-87.3-49.3-.2-.1c-1.3-.8-3.2-1.9-4.6-3.7c-1.7-2.1-2.5-4.7-2.5-7.7l0-208.5zm214.7 92.4l69.3 39.6 0-78.5-69.3-39.9 0 78.8zm94.5 39.6L473 221.2l0-78.8-69.3 39.9 0 78.5zM201.6 376.1l163.8-93.2-69-39.9L133 337.1l68.6 38.9zm12.9 101.5l164-94.2 0-78.8-164 93.6 0 79.4z"/></svg>
               Laravel
             </li>
-            <li class="tag skill-flutter" role="listitem" tabindex="0">
+            <li class="tag skill-flutter">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l3.67 3.67 9.07-9.07h-6.27zm2.46 8.528l-3.39 3.39h7.457L17.57 19.6h-.783z"/></svg>
               Flutter
             </li>
-            <li class="tag skill-nodejs" role="listitem" tabindex="0">
+            <li class="tag skill-nodejs">
               <svg width="16" height="16" viewBox="0 0 448 512" fill="currentColor" aria-hidden="true"><path d="M224 508c-6.7 0-13.5-1.8-19.4-5.2l-61.7-36.5c-9.2-5.2-4.7-7-1.7-8 12.3-4.3 14.8-5.2 27.9-12.7 1.4-.8 3.2-.5 4.6.4l47.4 28.1c1.7 1 4.1 1 5.7 0l184.7-106.6c1.7-1 2.8-3 2.8-5V149.3c0-2.1-1.1-4-2.9-5.1L226.8 37.7c-1.7-1-4-1-5.7 0L36.6 144.3c-1.8 1-2.9 3-2.9 5.1v213.1c0 2 1.1 4 2.9 4.9l50.6 29.2c27.5 13.7 44.3-2.4 44.3-18.7V167.5c0-3 2.4-5.3 5.4-5.3h23.4c2.9 0 5.4 2.3 5.4 5.3V378c0 36.6-20 57.6-54.7 57.6-10.7 0-19.1 0-42.5-11.6l-48.4-27.9C8.1 389.2.7 376.3.7 362.4V149.3c0-13.8 7.4-26.8 19.4-33.7L204.6 9c11.7-6.6 27.2-6.6 38.8 0l184.7 106.7c12 6.9 19.4 19.8 19.4 33.7v213.1c0 13.8-7.4 26.7-19.4 33.7L243.4 502.8c-5.9 3.4-12.6 5.2-19.4 5.2zm149.1-210.1c0-39.9-27-50.5-83.7-58-57.4-7.6-63.2-11.5-63.2-24.9 0-11.1 4.9-25.9 47.4-25.9 37.9 0 51.9 8.2 57.7 33.8.5 2.4 2.7 4.2 5.2 4.2h24c1.5 0 2.9-.6 3.9-1.7s1.5-2.6 1.4-4.1c-3.7-44.1-33-64.6-92.2-64.6-52.7 0-84.1 22.2-84.1 59.5 0 40.4 31.3 51.6 81.8 56.6 60.5 5.9 65.2 14.8 65.2 26.7 0 20.6-16.6 29.4-55.5 29.4-48.9 0-59.6-12.3-63.2-36.6-.4-2.6-2.6-4.5-5.3-4.5h-23.9c-3 0-5.3 2.4-5.3 5.3 0 31.1 16.9 68.2 97.8 68.2 58.4-.1 92-23.2 92-63.4z"/></svg>
               Node JS
             </li>
           </ul>
-          <div class="card-footer-tag" aria-hidden="true">&lt;/skills&gt;</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ======== PROJECTS SECTION ======== -->
-  <section class="projects" id="project" aria-label="Projects section">
+  <section class="projects" id="project" aria-label="Projects section" data-i18n-aria-label="projects_title" tabindex="-1">
     <div class="section-bg-text" aria-hidden="true" data-i18n="projects_bg">PROJECTS</div>
     <div class="projects-content">
       <div class="projects-opening">
-        <div class="section-tag" aria-hidden="true">&gt; PROJECT_SHOWCASE.EXE</div>
         <h2 class="section-title" data-aos="fade-up" data-i18n="projects_title">My Projects</h2>
         <p class="section-subtitle" data-aos="fade-up" data-i18n="projects_subtitle">
-          Explore my creative work in front-end development &amp; PowerPoint design. Each project reflects my commitment to delivering visually compelling, user-friendly results.
+          Selected work in front-end development, mobile apps, and presentation design.
         </p>
       </div>
 
       <div class="project-list">
-        <!-- Project 1 -->
-        <article class="project-card" data-aos="fade-up" data-aos-delay="100" tabindex="0" aria-label="Website project">
-          <div class="project-card-glow" aria-hidden="true"></div>
-          <div class="project-type-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-            Website
-          </div>
-          <div class="project-image-wrap">
-            <div class="code-window">
-              <div class="code-header">
-                <div class="mac-buttons">
-                  <span class="dot close"></span>
-                  <span class="dot minimize"></span>
-                  <span class="dot expand"></span>
-                </div>
-                <span class="file-name">app.js</span>
-              </div>
-              <div class="code-body">
-                <pre><code><span class="line-num">1</span> <span class="keyword">const</span> <span class="var">project</span> = {
-<span class="line-num">2</span>   <span class="prop">name</span>: <span class="string">"Si-Telomoyo"</span>,
-<span class="line-num">3</span>   <span class="prop">tech</span>: [<span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"JS"</span>],
-<span class="line-num">4</span>   <span class="prop">status</span>: <span class="string">"Live"</span>
-<span class="line-num">5</span> };<span class="cursor"></span></code></pre>
-              </div>
-            </div>
-            <div class="project-image-overlay" aria-hidden="true">
-              <span class="overlay-text">VIEW PROJECT</span>
-            </div>
+        <article class="project-card" data-aos="fade-up">
+          <div class="project-preview project-preview--mountain" role="img" aria-label="Project preview unavailable" data-i18n-aria-label="preview_missing">
+            <span class="preview-type" data-i18n="project_type_web">Website</span>
+            <span class="preview-mark" aria-hidden="true">ST</span>
+            <p data-i18n="preview_missing">Project image not provided</p>
           </div>
           <div class="project-info">
             <h3 class="project-name">Si-Telomoyo</h3>
-            <p class="project-desc" data-i18n="proj1_desc">
-              A university project highlighting Mount Telomoyo with a clean, responsive layout and smooth scroll animations using AOS. Built with HTML, CSS, and JavaScript.
-            </p>
-            <div class="project-tech" aria-label="Technologies used">
-              <span class="tech-tag">HTML</span>
-              <span class="tech-tag">CSS</span>
-              <span class="tech-tag">AOS</span>
+            <p class="project-desc" data-i18n="proj1_desc">A university project highlighting Mount Telomoyo with a clean, responsive layout and smooth scroll animations using AOS. Built with HTML, CSS, and JavaScript.</p>
+            <div class="project-tech" aria-label="Technologies used" data-i18n-aria-label="tech_used">
+              <span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">AOS</span>
             </div>
-            <a href="https://ghaniputra.github.io/Si-Telomoyo/" class="btn-project" target="_blank" rel="noopener noreferrer" aria-label="View Si-Telomoyo project live">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <a href="https://ghaniputra.github.io/Si-Telomoyo/" class="btn-project" target="_blank" rel="noopener noreferrer" aria-label="Open Si-Telomoyo live demo" data-i18n-aria-label="proj1_link_label">
               <span data-i18n="proj1_btn">Live Demo</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
           </div>
         </article>
 
-        <!-- Project 2 -->
-        <article class="project-card" data-aos="fade-up" data-aos-delay="200" tabindex="0" aria-label="Ngetces GPS Tracker project">
-          <div class="project-card-glow" aria-hidden="true"></div>
-          <div class="project-type-badge badge-pink">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            IoT App
-          </div>
-          <div class="project-image-wrap">
-            <div class="code-window">
-              <div class="code-header">
-                <div class="mac-buttons">
-                  <span class="dot close"></span>
-                  <span class="dot minimize"></span>
-                  <span class="dot expand"></span>
-                </div>
-                <span class="file-name">tracker.js</span>
-              </div>
-              <div class="code-body">
-                <pre><code><span class="line-num">1</span> <span class="keyword">const</span> <span class="var">project</span> = {
-<span class="line-num">2</span>   <span class="prop">name</span>: <span class="string">"Ngetces-Tracker"</span>,
-<span class="line-num">3</span>   <span class="prop">tech</span>: [<span class="string">"Flutter"</span>, <span class="string">"Firebase"</span>, <span class="string">"IoT"</span>],
-<span class="line-num">4</span>   <span class="prop">status</span>: <span class="string">"Active"</span>
-<span class="line-num">5</span> };<span class="cursor"></span></code></pre>
-              </div>
-            </div>
-            <div class="project-image-overlay" aria-hidden="true">
-              <span class="overlay-text">VIEW CODE</span>
-            </div>
+        <article class="project-card" data-aos="fade-up">
+          <div class="project-preview project-preview--tracker" role="img" aria-label="Project preview unavailable" data-i18n-aria-label="preview_missing">
+            <span class="preview-type" data-i18n="project_type_iot">IoT App</span>
+            <span class="preview-mark" aria-hidden="true">NG</span>
+            <p data-i18n="preview_missing">Project image not provided</p>
           </div>
           <div class="project-info">
             <h3 class="project-name">Ngetces GPS Tracker</h3>
-            <p class="project-desc" data-i18n="proj2_desc">
-              A Flutter-based GPS tracking application integrated with a backend for real-time location tracking, device management, and geofencing.
-            </p>
-            <div class="project-tech" aria-label="Technologies used">
-              <span class="tech-tag">Flutter</span>
-              <span class="tech-tag">Firebase</span>
-              <span class="tech-tag">IoT</span>
+            <p class="project-desc" data-i18n="proj2_desc">A Flutter-based GPS tracking application integrated with a backend for real-time location tracking, device management, and geofencing.</p>
+            <div class="project-tech" aria-label="Technologies used" data-i18n-aria-label="tech_used">
+              <span class="tech-tag">Flutter</span><span class="tech-tag">Firebase</span><span class="tech-tag">IoT</span>
             </div>
-            <a href="https://github.com/GhaniPutra/Ngetces" class="btn-project btn-project-pink" target="_blank" rel="noopener noreferrer" aria-label="View Ngetces GPS Tracker source code on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <a href="https://github.com/GhaniPutra/Ngetces" class="btn-project" target="_blank" rel="noopener noreferrer" aria-label="Open Ngetces GPS Tracker source code on GitHub" data-i18n-aria-label="proj2_link_label">
               <span data-i18n="proj2_btn">View Code</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
             </a>
           </div>
         </article>
 
-        <!-- Project 3 -->
-        <article class="project-card" data-aos="fade-up" data-aos-delay="300" tabindex="0" aria-label="Weather Vista App project">
-          <div class="project-card-glow" aria-hidden="true"></div>
-          <div class="project-type-badge badge-purple">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v2M4.93 4.93l1.41 1.41M20 12h2M6.34 17.66l-1.41 1.41M12 20v2M17.66 17.66l1.41-1.41M18 10a5 5 0 00-9.5 2h-.5a5 5 0 000 10h9a5 5 0 001-9.9z"/></svg>
-            Mobile App
-          </div>
-          <div class="project-image-wrap">
-            <div class="code-window">
-              <div class="code-header">
-                <div class="mac-buttons">
-                  <span class="dot close"></span>
-                  <span class="dot minimize"></span>
-                  <span class="dot expand"></span>
-                </div>
-                <span class="file-name">weather.js</span>
-              </div>
-              <div class="code-body">
-                <pre><code><span class="line-num">1</span> <span class="keyword">const</span> <span class="var">project</span> = {
-<span class="line-num">2</span>   <span class="prop">name</span>: <span class="string">"Weather-Vista"</span>,
-<span class="line-num">3</span>   <span class="prop">tech</span>: [<span class="string">"Flutter"</span>, <span class="string">"Dart"</span>, <span class="string">"API"</span>],
-<span class="line-num">4</span>   <span class="prop">status</span>: <span class="string">"Live"</span>
-<span class="line-num">5</span> };<span class="cursor"></span></code></pre>
-              </div>
-            </div>
-            <div class="project-image-overlay" aria-hidden="true">
-              <span class="overlay-text">DOWNLOAD APK</span>
-            </div>
+        <article class="project-card" data-aos="fade-up">
+          <div class="project-preview project-preview--weather" role="img" aria-label="Project preview unavailable" data-i18n-aria-label="preview_missing">
+            <span class="preview-type" data-i18n="project_type_mobile">Mobile App</span>
+            <span class="preview-mark" aria-hidden="true">WV</span>
+            <p data-i18n="preview_missing">Project image not provided</p>
           </div>
           <div class="project-info">
             <h3 class="project-name">Weather Vista</h3>
-            <p class="project-desc" data-i18n="proj3_desc">
-              A lightweight, modern weather application built with Flutter. It displays real-time weather info based on GPS or city name with a persistent favorites list.
-            </p>
-            <div class="project-tech" aria-label="Technologies used">
-              <span class="tech-tag">Flutter</span>
-              <span class="tech-tag">Dart</span>
-              <span class="tech-tag">Geolocator</span>
+            <p class="project-desc" data-i18n="proj3_desc">A lightweight, modern weather application built with Flutter. It displays real-time weather info based on GPS or city name with a persistent favorites list.</p>
+            <div class="project-tech" aria-label="Technologies used" data-i18n-aria-label="tech_used">
+              <span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span class="tech-tag">Geolocator</span>
             </div>
-            <a href="https://github.com/GhaniPutra/Weather-Vista" class="btn-project btn-project-purple" target="_blank" rel="noopener noreferrer" aria-label="View Weather Vista project source code on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              <span data-i18n="proj3_btn">Download APK</span>
+            <a href="https://github.com/GhaniPutra/Weather-Vista" class="btn-project" target="_blank" rel="noopener noreferrer" aria-label="Open Weather Vista source code on GitHub" data-i18n-aria-label="proj3_link_label">
+              <span data-i18n="proj3_btn">View Code</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
             </a>
           </div>
         </article>
 
-        <!-- Project 4 -->
-        <article class="project-card" data-aos="fade-up" data-aos-delay="400" tabindex="0" aria-label="Library GUI Desktop App project">
-          <div class="project-card-glow" aria-hidden="true"></div>
-          <div class="project-type-badge badge-green">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Desktop App
-          </div>
-          <div class="project-image-wrap">
-            <div class="code-window">
-              <div class="code-header">
-                <div class="mac-buttons">
-                  <span class="dot close"></span>
-                  <span class="dot minimize"></span>
-                  <span class="dot expand"></span>
-                </div>
-                <span class="file-name">library.py</span>
-              </div>
-              <div class="code-body">
-                <pre><code><span class="line-num">1</span> <span class="keyword">const</span> <span class="var">project</span> = {
-<span class="line-num">2</span>   <span class="prop">name</span>: <span class="string">"Library-GUI"</span>,
-<span class="line-num">3</span>   <span class="prop">tech</span>: [<span class="string">"Python"</span>, <span class="string">"Tkinter"</span>, <span class="string">"MySQL"</span>],
-<span class="line-num">4</span>   <span class="prop">status</span>: <span class="string">"Active"</span>
-<span class="line-num">5</span> };<span class="cursor"></span></code></pre>
-              </div>
-            </div>
-            <div class="project-image-overlay" aria-hidden="true">
-              <span class="overlay-text">VIEW CODE</span>
-            </div>
+        <article class="project-card" data-aos="fade-up">
+          <div class="project-preview project-preview--library" role="img" aria-label="Project preview unavailable" data-i18n-aria-label="preview_missing">
+            <span class="preview-type" data-i18n="project_type_desktop">Desktop App</span>
+            <span class="preview-mark" aria-hidden="true">LG</span>
+            <p data-i18n="preview_missing">Project image not provided</p>
           </div>
           <div class="project-info">
             <h3 class="project-name">Library GUI</h3>
-            <p class="project-desc" data-i18n="proj4_desc">
-              A desktop library management system prototype built with Python and Tkinter, featuring catalog operations, book borrowing/return workflows, and MySQL/MariaDB database integration.
-            </p>
-            <div class="project-tech" aria-label="Technologies used">
-              <span class="tech-tag">Python</span>
-              <span class="tech-tag">Tkinter</span>
-              <span class="tech-tag">MySQL</span>
+            <p class="project-desc" data-i18n="proj4_desc">A desktop library management system prototype built with Python and Tkinter, featuring catalog operations, book borrowing/return workflows, and MySQL/MariaDB database integration.</p>
+            <div class="project-tech" aria-label="Technologies used" data-i18n-aria-label="tech_used">
+              <span class="tech-tag">Python</span><span class="tech-tag">Tkinter</span><span class="tech-tag">MySQL</span>
             </div>
-            <a href="https://github.com/GhaniPutra/Library-GUI" class="btn-project btn-project-green" target="_blank" rel="noopener noreferrer" aria-label="View Library GUI project source code on GitHub">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            <a href="https://github.com/GhaniPutra/Library-GUI" class="btn-project" target="_blank" rel="noopener noreferrer" aria-label="Open Library GUI source code on GitHub" data-i18n-aria-label="proj4_link_label">
               <span data-i18n="proj4_btn">View Code</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
             </a>
           </div>
         </article>
@@ -409,38 +280,37 @@
   </section>
 
   <!-- ======== CONTACT SECTION ======== -->
-  <section class="contact" id="contact" aria-label="Contact section">
+  <section class="contact" id="contact" aria-label="Contact section" data-i18n-aria-label="contact_title" tabindex="-1">
     <div class="section-bg-text" aria-hidden="true" data-i18n="contact_bg">CONTACT</div>
 
     <!-- 3D Grid Floor (reused) -->
     <div class="grid-floor grid-floor-contact" aria-hidden="true"></div>
-    <div class="orb orb-4" aria-hidden="true"></div>
 
     <div class="contact-content">
       <div class="contact-opening">
-        <div class="section-tag" aria-hidden="true">&gt; SEND_MESSAGE.EXE</div>
         <h2 class="section-title" data-aos="fade-up" data-i18n="contact_title">Contact Me</h2>
         <p class="section-subtitle" data-aos="fade-up" data-i18n="contact_subtitle">
-          Got a question or an idea to share? Drop a message below — I'll get back to you soon! Always open for front-end, web, or presentation design collaborations.
+          Have a question or an idea to share? Send a message. I am open to front-end, web, and presentation design collaborations.
         </p>
       </div>
 
-      <form id="contact-form" class="contact-form" data-aos="fade-up" novalidate aria-label="Contact form">
+      <form id="contact-form" class="contact-form" data-aos="fade-up" aria-label="Contact form" data-i18n-aria-label="form_label" action="https://formspree.io/f/mzzrqdjv" method="POST">
         <div class="form-group">
           <label for="name" class="form-label" data-i18n="form_name">Your Name</label>
-          <input type="text" id="name" name="name" placeholder="John Doe" required autocomplete="name" aria-required="true" data-i18n="form_name">
+          <input type="text" id="name" name="name" required autocomplete="name" aria-required="true">
           <span class="form-focus-bar" aria-hidden="true"></span>
         </div>
         <div class="form-group">
           <label for="email" class="form-label" data-i18n="form_email">Your Email</label>
-          <input type="email" id="email" name="email" placeholder="john@example.com" required autocomplete="email" aria-required="true" data-i18n="form_email">
+          <input type="email" id="email" name="email" required autocomplete="email" aria-required="true">
           <span class="form-focus-bar" aria-hidden="true"></span>
         </div>
         <div class="form-group">
           <label for="message" class="form-label" data-i18n="form_message">Your Message</label>
-          <textarea id="message" name="message" placeholder="Hey Akmal, let's collaborate..." required aria-required="true" data-i18n="form_message"></textarea>
+          <textarea id="message" name="message" required aria-required="true"></textarea>
           <span class="form-focus-bar" aria-hidden="true"></span>
         </div>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite" aria-atomic="true"></p>
         <button type="submit" class="btn-submit" id="submitBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           <span data-i18n="form_submit">Send Message</span>
@@ -448,6 +318,8 @@
       </form>
     </div>
   </section>
+
+  </main>
 
   <!-- ======== FOOTER ======== -->
   <footer role="contentinfo">
@@ -474,27 +346,26 @@
       </nav>
     </div>
     <div class="footer-bottom">
-      <p>&copy; <span id="year"></span> Akmal Ghani Wijaya Putra. All rights reserved.</p>
-      <p class="footer-credit">Built with <span style="color:var(--neon-pink)">&#10084;</span> &amp; neon code</p>
+      <p>&copy; <span id="year">2026</span> Akmal Ghani Wijaya Putra. All rights reserved.</p>
+      <p class="footer-credit">Built with <span>&#10084;</span> &amp; neon code</p>
     </div>
   </footer>
 
   <!-- ======== CV PREVIEW MODAL ======== -->
-  <div id="cvModal" class="cv-modal" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle" aria-hidden="true">
+  <div id="cvModal" class="cv-modal" data-ui="dialog" role="dialog" aria-modal="true" aria-labelledby="cvModalTitle" aria-hidden="true">
     <div class="cv-modal-backdrop" id="cvModalBackdrop"></div>
-    <div class="cv-modal-window">
+    <div class="cv-modal-window" data-ui="dialog" tabindex="-1">
       <!-- Modal Header -->
       <div class="cv-modal-header">
         <div class="cv-modal-title-group">
-          <span class="cv-modal-tag" aria-hidden="true">&gt; SYS.DOC_VIEWER //</span>
           <h2 class="cv-modal-title" id="cvModalTitle" data-i18n="cv_modal_title">Curriculum Vitae</h2>
         </div>
         <div class="cv-modal-actions">
-          <a href="Akmal_Ghani_CV.pdf" target="_blank" rel="noopener noreferrer" class="cv-modal-btn cv-modal-btn-open" aria-label="Open CV in new tab">
+          <a href="Akmal_Ghani_CV.pdf" target="_blank" rel="noopener noreferrer" class="cv-modal-btn cv-modal-btn-open" aria-label="Open CV in a new tab" data-i18n-aria-label="cv_open_tab_label">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             <span data-i18n="cv_modal_open_tab">Open in Tab</span>
           </a>
-          <button type="button" class="cv-modal-btn cv-modal-btn-close" id="closeCvModal" aria-label="Close CV preview">
+          <button type="button" class="cv-modal-btn cv-modal-btn-close" id="closeCvModal" aria-label="Close CV preview" data-i18n-aria-label="cv_close">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
           </button>
         </div>
@@ -504,24 +375,24 @@
         <div class="cv-preview-scroll" id="cvPreviewScroll">
           <picture>
             <source srcset="images/cv/cv-preview.webp" type="image/webp">
-            <img src="images/cv/cv-preview.png" alt="Curriculum Vitae - Akmal Ghani Wijaya Putra" class="cv-preview-img" id="cvPreviewImg" loading="eager">
+            <img src="images/cv/cv-preview.png" alt="Curriculum Vitae preview for Akmal Ghani Wijaya Putra" class="cv-preview-img" id="cvPreviewImg" loading="eager" data-i18n-alt="cv_image_alt">
           </picture>
         </div>
         <!-- Modal Toolbar -->
         <div class="cv-modal-toolbar">
-          <div class="cv-zoom-controls" aria-label="Zoom controls">
-            <button type="button" class="cv-tool-btn" id="cvZoomOut" aria-label="Zoom Out" title="Zoom Out">
+          <div class="cv-zoom-controls" aria-label="CV zoom controls" data-i18n-aria-label="cv_zoom_controls">
+          <button type="button" class="cv-tool-btn" id="cvZoomOut" aria-label="Zoom out" title="Zoom out" data-i18n-aria-label="cv_zoom_out" data-i18n-title="cv_zoom_out">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
             </button>
             <span class="cv-zoom-level" id="cvZoomLevel" aria-live="polite">100%</span>
-            <button type="button" class="cv-tool-btn" id="cvZoomIn" aria-label="Zoom In" title="Zoom In">
+            <button type="button" class="cv-tool-btn" id="cvZoomIn" aria-label="Zoom in" title="Zoom in" data-i18n-aria-label="cv_zoom_in" data-i18n-title="cv_zoom_in">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
             </button>
-            <button type="button" class="cv-tool-btn" id="cvZoomReset" aria-label="Fit to Screen" title="Fit to Screen">
+            <button type="button" class="cv-tool-btn" id="cvZoomReset" aria-label="Fit to screen" title="Fit to screen" data-i18n-aria-label="cv_zoom_reset" data-i18n-title="cv_zoom_reset">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
             </button>
           </div>
-          <a href="Akmal_Ghani_CV.pdf" download aria-label="Download CV PDF" class="cv-modal-download-link">
+          <a href="Akmal_Ghani_CV.pdf" download aria-label="Download CV as PDF" data-i18n-aria-label="hero_download_cv_label" class="cv-modal-download-link">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             <span data-i18n="hero_btn_cv">Download CV</span>
           </a>
@@ -531,11 +402,7 @@
   </div>
 
   <!-- Toast container -->
-  <div id="toast-container" role="status" aria-live="polite" aria-atomic="true"
-    style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:9999;pointer-events:none;"></div>
-
   <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/lang.js" defer></script>
   <script src="js/home.js" defer></script>
   <script src="js/contact.js" defer></script>
