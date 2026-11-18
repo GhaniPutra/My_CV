@@ -249,6 +249,7 @@
         autoRaf: false,
         anchors: true,
         smoothWheel: true,
+        prevent: (node) => Boolean(node?.closest?.('#cvPreviewScroll')),
         syncTouch: false,
         respectReducedMotion: true
       });
@@ -772,10 +773,6 @@
     const image = query('#cvPreviewImg');
     const imageFallback = query('#cvPreviewFallback');
     const scroll = query('#cvPreviewScroll');
-    const zoomOut = query('#cvZoomOut');
-    const zoomIn = query('#cvZoomIn');
-    const zoomReset = query('#cvZoomReset');
-    const zoomLabel = query('#cvZoomLevel');
     const panel = query('.cv-modal-window', modal || document);
     if (!modal || !opener || !panel) return;
 
@@ -784,23 +781,15 @@
       if (imageFallback) imageFallback.hidden = false;
     }, { once: true });
 
-    const levels = [75, 100, 125, 150, 200];
-    let zoomIndex = 1;
     let returnFocus = opener;
     let backgroundState = [];
+    let pageScrollY = 0;
+    let bodyStyle = '';
+    let pinchStartDistance = 0;
+    let pinchStartScale = 1;
+    let imageScale = 1;
+    let baseImageWidth = 760;
     const focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
-
-    const applyZoom = () => {
-      const level = levels[zoomIndex];
-      if (zoomLabel) zoomLabel.textContent = `${level}%`;
-      if (image) {
-        image.style.width = `${level}%`;
-        image.style.maxWidth = `${Math.round(760 * level / 100)}px`;
-      }
-      if (zoomOut) zoomOut.disabled = zoomIndex === 0;
-      if (zoomIn) zoomIn.disabled = zoomIndex === levels.length - 1;
-      if (zoomReset) zoomReset.disabled = zoomIndex === 1;
-    };
 
     const setBackgroundInert = (inert) => {
       const background = [query('#navbar'), query('main'), query('footer')].filter(Boolean);
@@ -816,12 +805,15 @@
     const open = (event) => {
       event.preventDefault();
       returnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : opener;
-      zoomIndex = 1;
-      applyZoom();
+      pageScrollY = window.scrollY;
+      bodyStyle = document.body.getAttribute('style') || '';
       if (scroll) { scroll.scrollTop = 0; scroll.scrollLeft = 0; }
+      imageScale = 1;
+      if (image) { image.style.width = ''; image.style.maxWidth = ''; }
       modal.classList.add('active');
       modal.setAttribute('aria-hidden', 'false');
       document.body.classList.add('modal-open');
+      Object.assign(document.body.style, { position: 'fixed', top: `-${pageScrollY}px`, left: '0', right: '0', width: '100%' });
       setBackgroundInert(true);
       close?.focus({ preventScroll: true });
     };
@@ -831,6 +823,8 @@
       modal.classList.remove('active');
       modal.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('modal-open');
+      document.body.setAttribute('style', bodyStyle);
+      window.scrollTo(0, pageScrollY);
       setBackgroundInert(false);
       returnFocus?.focus({ preventScroll: true });
     };
@@ -854,24 +848,71 @@
       }
     };
 
-    const onZoom = (delta) => {
-      zoomIndex = Math.max(0, Math.min(levels.length - 1, zoomIndex + delta));
-      applyZoom();
+    const touchDistance = (touches) => Math.hypot(touches[0].clientX - touches[1].clientX, touches[0].clientY - touches[1].clientY);
+    const measureBaseImageWidth = () => {
+      if (!image || !scroll) return;
+      const styles = window.getComputedStyle(scroll);
+      const padding = Number.parseFloat(styles.paddingLeft) + Number.parseFloat(styles.paddingRight);
+      baseImageWidth = Math.min(760, image.naturalWidth || 760, scroll.clientWidth - padding);
     };
+    const updateImageScale = () => {
+      if (!image || !scroll) return;
+      if (Math.abs(imageScale - 1) < 0.01) {
+        imageScale = 1;
+        image.style.width = '';
+        image.style.maxWidth = '';
+        return;
+      }
+      image.style.width = `${baseImageWidth * imageScale}px`;
+      image.style.maxWidth = 'none';
+    };
+    const onTouchStart = (event) => {
+      if (event.touches.length !== 2) return;
+      if (imageScale === 1) measureBaseImageWidth();
+      pinchStartDistance = touchDistance(event.touches);
+      pinchStartScale = imageScale;
+    };
+    const onTouchMove = (event) => {
+      if (event.touches.length !== 2 || !pinchStartDistance || !image) return;
+      event.preventDefault();
+      imageScale = Math.min(3, Math.max(0.5, pinchStartScale * touchDistance(event.touches) / pinchStartDistance));
+      updateImageScale();
+    };
+    const onTouchEnd = (event) => { if (event.touches.length < 2) pinchStartDistance = 0; };
+    const onPreviewWheel = (event) => {
+      if (!scroll || !modal.classList.contains('active')) return;
+      event.preventDefault();
+      if (event.ctrlKey && image) {
+        if (imageScale === 1) measureBaseImageWidth();
+        imageScale = Math.min(3, Math.max(0.5, imageScale * Math.exp(-event.deltaY * 0.01)));
+        updateImageScale();
+      } else {
+        scroll.scrollTop += event.deltaY;
+        scroll.scrollLeft += event.deltaX;
+      }
+    };
+
     opener.addEventListener('click', open);
     close?.addEventListener('click', dismiss);
     backdrop?.addEventListener('click', dismiss);
-    zoomOut?.addEventListener('click', () => onZoom(-1));
-    zoomIn?.addEventListener('click', () => onZoom(1));
-    zoomReset?.addEventListener('click', () => { zoomIndex = 1; applyZoom(); });
-    image?.addEventListener('dblclick', () => { zoomIndex = zoomIndex === 1 ? 3 : 1; applyZoom(); });
+    scroll?.addEventListener('touchstart', onTouchStart, { passive: true });
+    scroll?.addEventListener('touchmove', onTouchMove, { passive: false });
+    scroll?.addEventListener('touchend', onTouchEnd, { passive: true });
+    scroll?.addEventListener('wheel', onPreviewWheel, { passive: false });
     document.addEventListener('keydown', onKeydown);
-    applyZoom();
     cleanup.push(() => {
       opener.removeEventListener('click', open);
       close?.removeEventListener('click', dismiss);
       backdrop?.removeEventListener('click', dismiss);
+      scroll?.removeEventListener('touchstart', onTouchStart);
+      scroll?.removeEventListener('touchmove', onTouchMove);
+      scroll?.removeEventListener('touchend', onTouchEnd);
+      scroll?.removeEventListener('wheel', onPreviewWheel);
       document.removeEventListener('keydown', onKeydown);
+      if (modal.classList.contains('active')) {
+        document.body.setAttribute('style', bodyStyle);
+        window.scrollTo(0, pageScrollY);
+      }
       document.body.classList.remove('modal-open');
       setBackgroundInert(false);
     });
