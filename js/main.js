@@ -8,6 +8,7 @@
   let scrollTrigger = window.ScrollTrigger || null;
   let pageDisposed = false;
   let enhancementPromise = null;
+  let threeLoadPromise = null;
   let enhancementLoaded = false;
   let smoothScrollReady = false;
   let threeSceneReady = false;
@@ -918,13 +919,29 @@
     });
   }
 
+  function loadThreeScene() {
+    if (pageDisposed || reducedMotion.matches || threeSceneReady) return Promise.resolve(false);
+    if (window.THREE) {
+      initThreeScene();
+      return Promise.resolve(threeSceneReady);
+    }
+    if (threeLoadPromise) return threeLoadPromise;
+
+    threeLoadPromise = loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js').then((loaded) => {
+      threeLoadPromise = null;
+      if (!loaded || pageDisposed || reducedMotion.matches) return false;
+      initThreeScene();
+      return threeSceneReady;
+    });
+    return threeLoadPromise;
+  }
+
   function loadEnhancements() {
     if (pageDisposed || reducedMotion.matches || !finePointer.matches) return Promise.resolve(false);
 
     if (enhancementLoaded) {
       initSmoothScroll();
       initHeroIntro();
-      initThreeScene();
       return Promise.resolve(true);
     }
     if (enhancementPromise) return enhancementPromise;
@@ -934,9 +951,8 @@
       : loadScript('https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js')
         .then((loaded) => loaded ? loadScript('https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js') : false);
     const lenisLoad = window.Lenis ? Promise.resolve(true) : loadScript('https://unpkg.com/lenis@1.3.27/dist/lenis.min.js');
-    const threeLoad = window.THREE ? Promise.resolve(true) : loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js');
 
-    enhancementPromise = Promise.all([gsapLoad, lenisLoad, threeLoad]).then(() => {
+    enhancementPromise = Promise.all([gsapLoad, lenisLoad]).then(() => {
       enhancementPromise = null;
       if (pageDisposed || reducedMotion.matches || !finePointer.matches) return false;
 
@@ -948,7 +964,6 @@
       initSectionTriggers();
       initSmoothScroll();
       initHeroIntro();
-      initThreeScene();
       enhancementLoaded = true;
       return true;
     });
@@ -964,7 +979,9 @@
   initCvModal();
 
   const onMotionModeChange = () => {
-    if (!reducedMotion.matches && finePointer.matches) loadEnhancements();
+    if (reducedMotion.matches) return;
+    loadThreeScene();
+    if (finePointer.matches) loadEnhancements();
   };
   addListener(reducedMotion, 'change', onMotionModeChange);
   addListener(finePointer, 'change', onMotionModeChange);
@@ -976,5 +993,6 @@
   window.addEventListener('pagehide', (event) => {
     if (!event.persisted) dispose();
   });
+  loadThreeScene();
   loadEnhancements();
 })();
