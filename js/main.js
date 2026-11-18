@@ -770,6 +770,7 @@
     const close = query('#closeCvModal');
     const backdrop = query('#cvModalBackdrop');
     const image = query('#cvPreviewImg');
+    const imageFallback = query('#cvPreviewFallback');
     const scroll = query('#cvPreviewScroll');
     const zoomOut = query('#cvZoomOut');
     const zoomIn = query('#cvZoomIn');
@@ -777,6 +778,11 @@
     const zoomLabel = query('#cvZoomLevel');
     const panel = query('.cv-modal-window', modal || document);
     if (!modal || !opener || !panel) return;
+
+    image?.addEventListener('error', () => {
+      image.hidden = true;
+      if (imageFallback) imageFallback.hidden = false;
+    }, { once: true });
 
     const levels = [75, 100, 125, 150, 200];
     let zoomIndex = 1;

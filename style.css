@@ -570,6 +570,8 @@ footer { position: relative; z-index: 2; padding: 36px clamp(24px, 7vw, 112px) 2
 .cursor-dot.is-visible, .cursor-ring.is-visible { opacity: 1; }
 .cursor-ring.is-hovering { width: 45px; height: 45px; border-color: var(--pink); }
 html.has-custom-cursor, html.has-custom-cursor body, html.has-custom-cursor a, html.has-custom-cursor button { cursor: none; }
+#cvModal, #cvModal * { cursor: auto; }
+#cvModal a, #cvModal button { cursor: pointer; }
 
 html.has-reveals [data-aos] { opacity: 0; transform: translate3d(0, 24px, 0); }
 html.has-reveals [data-aos="fade-right"] { transform: translate3d(-24px, 0, 0); }
